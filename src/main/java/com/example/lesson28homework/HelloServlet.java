@@ -20,7 +20,7 @@ public class HelloServlet extends HttpServlet {
         user.setLogin(request.getParameter("login"));
         user.setPassword(request.getParameter("password"));
 
-        if (user.validateLogin() && user.validatePassword()) {
+        if ((user.getLogin() == null || user.validateLogin())  && (user.getPassword() == null || user.validatePassword())) {
             request.getRequestDispatcher("success.jsp").forward(request, response);
         } else {
             request.getRequestDispatcher("index.jsp").forward(request, response);
